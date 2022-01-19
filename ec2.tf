@@ -10,19 +10,6 @@ resource "aws_instance" "web" {
     type        = "ssh"
     private_key = "${file("/home/ec2-user/Krish")}"
   }
-   
-
-   provisioner "file" {
-     source      = "/root/Krish"
-     destination = "/home/ec2-user/Krish"
-
-    connection {
-      host        = "${self.public_ip}"
-      user        = "ec2-user"
-      type        = "ssh"
-      private_key = "${file("/home/ec2-user/Krish")}"
-     }
-   }
 
    provisioner "remote-exec" {
     inline = [
