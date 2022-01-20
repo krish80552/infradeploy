@@ -4,11 +4,15 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = ["sg-0785ae796b2761b5a"]
   key_name = "Krish" 
   
+  data "local_file" "private_key" {
+    filename = "${(root/Krish)}"
+}
+  
    connection {
     host        = "${self.public_ip}"
     user        = "ec2-user"
     type        = "ssh"
-    private_key = "${file("/home/ec2-user/Krish")}"
+    private_key = data.local_file.private_key
   }
   
    provisioner "remote-exec" {
