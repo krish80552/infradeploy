@@ -1,22 +1,14 @@
-provider "aws" {
-  region = "us-west-2"
-}
 resource "aws_instance" "web" {
   ami           = "ami-00f7e5c52c0f43726"
   instance_type = "t3.micro"
   vpc_security_group_ids = ["sg-0785ae796b2761b5a"]
-  key_name = "Krish.pem"
-  
-   provisioner "file" {
-    source = "/home/ec2-user/Krish.pem" 
-    destination = "/home/ec2-user/Krish.pem"
-  }
+  key_name = "Krish" 
   
    connection {
     host        = "${self.public_ip}"
     user        = "ec2-user"
     type        = "ssh"
-    private_key = "${file("/home/ec2-user/Krish.pem")}"
+    private_key = "${file("/home/ec2-user/Krish")}"
   }
   
    provisioner "remote-exec" {
@@ -28,7 +20,7 @@ resource "aws_instance" "web" {
   }
 
   provisioner "local-exec" {
-    command = "echo ${self.public_ip} ansible_ssh_user=ec2-user ansible_ssh_private_key_file=/root/Krish.pem > /etc/ansible/hosts"
+    command = "echo ${self.public_ip} ansible_ssh_user=ec2-user ansible_ssh_private_key_file=/root/Krish > /etc/ansible/hosts"
   }
   
 
