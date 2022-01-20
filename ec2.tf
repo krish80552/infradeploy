@@ -8,7 +8,7 @@ resource "aws_instance" "web" {
     host        = "${self.public_ip}"
     user        = "ec2-user"
     type        = "ssh" 
-    private_key =  file ("${path.root}/home/ec2-user/Krish.pem")
+    private_key =  file ("${path.module}/home/ec2-user/Krish.pem")
   }
   
 provisioner "file" {
