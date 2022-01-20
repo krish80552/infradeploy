@@ -3,9 +3,6 @@ resource "aws_instance" "web" {
   instance_type = "t3.micro"
   vpc_security_group_ids = ["sg-0785ae796b2761b5a"]
   key_name = "Krish" 
-  
-}
-         
           
    connection {
     host        = "${self.public_ip}"
@@ -35,4 +32,6 @@ provisioner "file" {
   tags = {
     Name = "HelloWorld"
   }
+  
+}
 
