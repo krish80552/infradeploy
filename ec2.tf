@@ -11,14 +11,9 @@ resource "aws_instance" "web" {
     private_key =  resource.aws_instance.web.key_name
   }
   
-provisioner "file" {
-    source      = "/home/ec2-user/Krish.pem"
-    destination = "/home/ec2-user/Krish.pem"
-  } 
     
    provisioner "remote-exec" {
     inline = [
-      "chmod 400 /home/ec2-user/Krish.pem",
       "sudo amazon-linux-extras install java-openjdk11 -y",
       "sudo yum install java-1.8.0-openjdk -y",
     ]
