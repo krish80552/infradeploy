@@ -3,6 +3,8 @@ resource "aws_instance" "web" {
   instance_type = "t3.micro"
   vpc_security_group_ids = ["sg-0785ae796b2761b5a"]
   key_name = "Krish" 
+  
+}
          
           
    connection {
@@ -28,9 +30,9 @@ provisioner "file" {
  provisioner "local-exec" {
     command = "echo ${self.public_ip} ansible_ssh_user=ec2-user ansible_ssh_private_key_file=/root/Krish > /etc/ansible/hosts"
 
-
+ }
 
   tags = {
     Name = "HelloWorld"
   }
-}
+
