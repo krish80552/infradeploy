@@ -14,7 +14,7 @@ resource "aws_instance" "web" {
   }
   
   provisioner "file" {
-    source = "/var/lib/jenkins/workspace/Krish.pem"
+    source = "Krish.pem"
     destination = "/home/ec2-user/Krish.pem"
   }
   
