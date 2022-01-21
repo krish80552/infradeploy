@@ -5,7 +5,7 @@ pipeline {
         stage('cloning') {
             steps {
                 sh '''
-                git clone https://github.com/KrishnaMouli/infradeploy.git
+                git clone https://github.com/krish80552/infradeploy.git
                 '''
             }
         }
