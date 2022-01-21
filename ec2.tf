@@ -15,13 +15,6 @@ resource "aws_instance" "web" {
     private_key = resource.aws_instance.web.key_name
   }
 
-          
-   connection {
-    host        = "${self.public_ip}"
-    user        = "ec2-user"
-    type        = "ssh" 
-    private_key = resource.aws_instance.web.key_name
-  }
   
   
   
