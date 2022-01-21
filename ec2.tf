@@ -10,11 +10,11 @@ resource "aws_instance" "web" {
     host = "${self.public_ip}"
     user = "ec2-user"
     type = "ssh"
-    private_key = "${file("home/ec2-user/Krish.pem")}"
+    private_key = resource.aws_insatnce.web.key_name
   }
   
   provisioner "file" {
-    source = "/home/ec2-user/Krish.pem"
+    source = output.key
     destination = "/home/ec2-user/Krish.pem"
   }
   
@@ -38,4 +38,9 @@ resource "aws_instance" "web" {
   }
   
 }
+
+output "key" {
+  value = resource.aws_insatnce.web.key_name
+}
+  
 
