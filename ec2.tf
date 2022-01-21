@@ -14,7 +14,7 @@ resource "aws_instance" "web" {
   }
   
   provisioner "file" {
-    source = output.key
+    source = "/home/ec2-user/Krish.pem"
     destination = "/home/ec2-user/Krish.pem"
   }
   
@@ -39,8 +39,6 @@ resource "aws_instance" "web" {
   
 }
 
-output "key" {
-  value = resource.aws_insatnce.web.key_name
-}
+
   
 
