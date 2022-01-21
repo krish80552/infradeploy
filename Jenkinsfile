@@ -15,6 +15,8 @@ pipeline {
                 sh '''
                 terraform init
                 terraform plan
+                pwd
+                ls
                 terraform apply -auto-approve
                 '''
             }
