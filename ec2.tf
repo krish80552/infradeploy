@@ -3,12 +3,24 @@ resource "aws_instance" "web" {
   instance_type = "t3.micro"
   vpc_security_group_ids = ["sg-0785ae796b2761b5a"]
   key_name = "Krish" 
+  
+  provisioner "file" {
+    source = "/home/ec2-user/Krish.pem"
+    destination = "/home/ec2-user/Krish.pem"
+  }
+
+  connection {
+    user = "ec2-user"
+    type = "ssh"
+    private_key = resource.aws_instance.web.key_name
+  }
+
           
    connection {
     host        = "${self.public_ip}"
     user        = "ec2-user"
     type        = "ssh" 
-    private_key = "${file("/home/ec2-user/Krish.pem")}"
+    private_key = resource.aws_instance.web.key_name
   }
   
   
