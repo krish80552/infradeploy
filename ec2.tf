@@ -6,17 +6,17 @@ resource "aws_instance" "web" {
   
 
 
-  connection {
-    host = "${self.public_ip}"
-    user = "ec2-user"
-    type = "ssh"
-    private_key = "resource.aws_insatnce.web.key_name"
-  }
+#  connection {
+#    host = "${self.public_ip}"
+#    user = "ec2-user"
+#    type = "ssh"
+#    private_key = "resource.aws_insatnce.web.key_name"
+#  }
   
-  provisioner "file" {
-    source = "/home/ec2-user/Krish.pem"
-    destination = "/home/ec2-user/Krish.pem"
-  }
+#  provisioner "file" {
+#    source = "/home/ec2-user/Krish.pem"
+#    destination = "/home/ec2-user/Krish.pem"
+#  }
   
   
   
@@ -26,6 +26,13 @@ resource "aws_instance" "web" {
       "sudo amazon-linux-extras install java-openjdk11 -y",
       "sudo yum install java-1.8.0-openjdk -y",
     ]
+   connection {
+       type        = "ssh"
+       host        = self.public_ip
+       user        = "ec2-user"
+       private_key = file("/home/ec2-user/Krish.pem")
+       timeout     = "4m"
+   }
   }
 
  provisioner "local-exec" {
