@@ -4,17 +4,19 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = ["sg-0785ae796b2761b5a"]
   key_name = "Krish" 
   
-  provisioner "file" {
-    source = "/home/ec2-user/Krish.pem"
-    destination = "/home/ec2-user/Krish.pem"
-  }
+
 
   connection {
+    host = "${self.public_ip}"
     user = "ec2-user"
     type = "ssh"
     private_key = resource.aws_instance.web.key_name
   }
-
+  
+  provisioner "file" {
+    source = "/home/ec2-user/Krish.pem"
+    destination = "/home/ec2-user/Krish.pem"
+  }
   
   
   
