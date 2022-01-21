@@ -3,13 +3,13 @@
   become: root
   tasks:
   - name: Execute the command in remote shell
-    shell: wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.56/bin/apache-tomcat-9.0.56.tar.gz
+    shell: wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.58/bin/apache-tomcat-9.0.58.tar.gz
 
   - name: Execute the command in remote shell
-    shell: tar -xvf apache-tomcat-9.0.56.tar.gz 
+    shell: tar -xvf apache-tomcat-9.0.58.tar.gz 
 
   - name: Execute the command in remote shell
-    shell: mv apache-tomcat-9.0.56 tomcat9
+    shell: mv apache-tomcat-9.0.58 tomcat9
 
   - name: Execute the command in remote shell
     shell: |
