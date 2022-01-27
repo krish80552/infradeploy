@@ -9,7 +9,7 @@ connection {
   host        = self.public_ip
   user        = "ec2-user"
   type        = "ssh"
-  private_key = file("/home/ec2-user/Krish.pem")
+  private_key = file("Krish.pem")
 }
 
 provisioner "file" {
@@ -22,6 +22,9 @@ provisioner "remote-exec" {
     "chmod 400 /home/ec2-user/Krish.pem",
     "sudo amazon-linux-extras install java-openjdk11 -y",
     "sudo yum install java-1.8.0-openjdk -y",
+    "cp Krish.pem /tmp/Krish.pem",
+    "chown jenkins:jenkins /tmp/Krish.pem",
+    "chown 400 /tmp/Krish.pem",
   ]
 }
 
