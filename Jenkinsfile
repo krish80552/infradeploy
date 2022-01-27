@@ -26,7 +26,6 @@ pipeline {
         }
         
       
-    }
         stage('Install_tomcat'){
            
             steps {
