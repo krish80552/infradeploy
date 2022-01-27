@@ -26,7 +26,7 @@ provisioner "remote-exec" {
 }
 
 provisioner "local-exec" {
-  command = "echo ${self.public_ip} ansible_ssh_user=ec2-user ansible_ssh_private_key_file=Krish.pem > /tmp/hosts"
+  command = "echo ${self.public_ip} ansible_ssh_user=ec2-user ansible_ssh_private_key_file=/var/lib/jenkins/workspace/infradeploy/Krish.pem > /tmp/hosts"
 
 }
 
