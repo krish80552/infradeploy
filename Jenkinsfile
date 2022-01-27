@@ -25,6 +25,7 @@ pipeline {
         stage('Install_tomcat') {
             steps {
                 sh '''
+                chmod 400 Krish.pem
                 ansible-playbook -i /tmp/hosts tomcat.yml -vv
                 '''
             }
