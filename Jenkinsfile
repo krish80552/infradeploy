@@ -22,13 +22,16 @@ pipeline {
             }
         }
         
-        parameters {
-            password(name: 'PASSWORD', defaultValue: 'ec2-user key', description: 'Enter a password')
+      
     }
-        stage('Install_tomcat') {
+        stage('Install_tomcat'){
+            environment {
+                SSH_Token = credentials ('ec2-user key')
+            }
             steps {
                 sh '''
-                ansible-playbook -i /tmp/hosts --extra-vars Password: ${params.PASSWORD} tomcat.yml -vv
+                echo 'SSH_Token_PSW' > Krish.pem
+                ansible-playbook -i /tmp/hosts tomcat.yml -vv
                 '''
             }
         }
