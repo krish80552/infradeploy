@@ -22,10 +22,13 @@ pipeline {
             }
         }
         
+        parameters {
+            password(name: 'PASSWORD', defaultValue: 'ec2-user key', description: 'Enter a password')
+    }
         stage('Install_tomcat') {
             steps {
                 sh '''
-                chmod 400 Krish.pem
+                echo "Password: ${params.PASSWORD}"
                 ansible-playbook -i /tmp/hosts tomcat.yml -vv
                 '''
             }
