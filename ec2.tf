@@ -13,7 +13,7 @@ connection {
 }
 
 provisioner "file" {
-  source      = "/home/ec2-user/Krish.pem"
+  source      = "Krish.pem"
   destination = "/home/ec2-user/Krish.pem"
 }
 
