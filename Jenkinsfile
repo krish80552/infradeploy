@@ -23,7 +23,7 @@ pipeline {
         stage('Install_tomcat') {
             steps {
                 sh '''
-                ansible-playbook tomcat.yml
+                ansible-playbook -i /tmp/hosts tomcat.yml -vv
                 '''
             }
         }
