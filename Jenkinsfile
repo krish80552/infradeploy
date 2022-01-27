@@ -13,6 +13,8 @@ pipeline {
         stage('Create_Infra') {
             steps {
                 sh '''
+                pwd
+                ls -ltr
                 terraform init
                 terraform plan 
                 terraform apply -auto-approve
