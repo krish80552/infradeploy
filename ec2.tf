@@ -26,7 +26,7 @@ provisioner "remote-exec" {
 }
 
 provisioner "local-exec" {
-  command = "echo ${self.public_ip} > /tmp/hosts"
+  command = "echo ${self.public_ip} > hosts"
 
 }
 
