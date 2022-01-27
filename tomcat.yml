@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  remote_user: ec2-user
   become: root
   tasks:
   - name: Execute the command in remote shell
