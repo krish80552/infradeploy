@@ -28,8 +28,7 @@ pipeline {
         stage('Install_tomcat') {
             steps {
                 sh '''
-                echo "Password: ${params.PASSWORD}" > /var/lib/jenkins/workspace
-                ansible-playbook -i /tmp/hosts tomcat.yml -vv
+                ansible-playbook -i /tmp/hosts --extra-vars Password: ${params.PASSWORD} tomcat.yml -vv
                 '''
             }
         }
