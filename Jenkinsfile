@@ -2,9 +2,7 @@ pipeline {
     agent any
     
     stages {
-         environment {
-                SSH_Token = credentials ('ec2-user key')
-            }
+        
         stage('cloning') {
             steps {
                 sh '''
